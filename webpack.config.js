@@ -1,6 +1,6 @@
 module.exports = {
-  mode: 'development',
-  devtool: false,
+  mode: process.env.NODE_ENV,
+  devtool: process.env.NODE_ENV !== 'production' ? 'source-map' : false,
   module: {
     rules: [
       {
