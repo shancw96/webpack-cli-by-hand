@@ -23,9 +23,21 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: {
+          // without additional settings, this will reference .babelrc
+          loader: "babel-loader",
+          options: {
+            /**
+             * From the docs: When set, the given directory will be used
+             * to cache the results of the loader. Future webpack builds
+             * will attempt to read from the cache to avoid needing to run
+             * the potentially expensive Babel recompilation process on each run.
+             */
+            cacheDirectory: true,
+          },
+        },
       },
     ]
   },

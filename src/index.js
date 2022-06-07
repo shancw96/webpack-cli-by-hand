@@ -1,8 +1,12 @@
-import './style/index.scss';
-function demo() {
-  for(var i = 0; i < 10; i++) {
-    console.log('hello world?', i);
-  }
-  return `${1 + 2 + 3}`
-}
-console.log('hello world?', demo())
+import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
+import App from './app.jsx';
+import './style/index.scss'
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
