@@ -24,3 +24,13 @@
 body {
   background: green;
 }
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  font-size: 1.5rem;
+}

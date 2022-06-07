@@ -8,10 +8,19 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s?[ac]ss$/,
-        // MiniCssExtractPlugin.loader is used to extract CSS into files
-        // style-loader injects CSS into the DOM as a style tag
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        test: /\.(s[ac]|c)ss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            // This is required for asset imports in CSS, such as url()
+            options: { publicPath: "" },
+          },
+          "css-loader",
+          "postcss-loader",
+          // according to the docs, sass-loader should be at the bottom, which
+          // loads it first to avoid prefixes in your sourcemaps and other issues.
+          "sass-loader",
+        ],
       },
       {
         test: /\.js$/,
