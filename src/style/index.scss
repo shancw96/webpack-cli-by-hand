@@ -1,0 +1,26 @@
+.header {
+  .left {
+    .logo {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .right {
+    .menu {
+      ul {
+        li {
+          a {
+            &:hover {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+body {
+  background: green;
+}
