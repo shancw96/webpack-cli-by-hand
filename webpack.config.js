@@ -1,10 +1,25 @@
-
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: process.env.NODE_ENV,
-  devtool: 'source-map',
-  plugins: [new MiniCssExtractPlugin()],
+  devtool: "source-map",
+  entry: {
+    main: "./src/index.js",
+    example: "./src/example.js",
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: "./public/index.html",
+      chunks: ["main"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "example.html",
+      template: "./public/example.html",
+      chunks: ["example"],
+    }),
+  ],
   module: {
     rules: [
       {
@@ -39,12 +54,12 @@ module.exports = {
           },
         },
       },
-    ]
+    ],
   },
   devServer: {
     // dev server 设置静态文件目录为 ./dist
-    static: './dist',
+    static: "./dist",
     // 热更新，只更新改变的文件
-    hot: true
-  }
-}
+    hot: true,
+  },
+};
